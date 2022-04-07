@@ -4,10 +4,14 @@ using UnityEngine;
 using FusedVR.Web3;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Threading;
+using System;
 
 public class Auth : MonoBehaviour
 {
     public TextMeshProUGUI email;
+
+    CancellationTokenSource _tokenSource = null;
     // Start is called before the first frame update
     //async void Start()
     //{
@@ -16,22 +20,31 @@ public class Auth : MonoBehaviour
 
     public async void Login()
     {
-        Debug.Log("Funciona el click");
-        if (await Web3Manager.Login("app id", PlayerPrefs.GetString("TempEmail")))
+        _tokenSource = new CancellationTokenSource();
+
+        try
         {
-            SceneManager.LoadScene("MainScene");
+            if (await Web3Manager.Login("app id", PlayerPrefs.GetString("TempEmail")))
+            {
+                SceneManager.LoadScene("MainScene");
 
-            string address = await Web3Manager.GetAddress();
-            Debug.Log(address);
+                string address = await Web3Manager.GetAddress();
+                Debug.Log(address);
 
-            string balance = await Web3Manager.GetNativeBalance("eth");
-            Debug.Log(balance);
+                string balance = await Web3Manager.GetNativeBalance("eth");
+                Debug.Log(balance);
+            }
+
+        } catch (OperationCanceledException e)
+        {
+            //no tiene pinta de funcionar
+            Debug.Log("Operación abortada:" + e);
         }
+        
     }
 
-    private void OnMouseDown()
+    public void CancelLogin()
     {
-        Debug.Log("Funciona el click");
-        SceneManager.LoadScene("MainScene");
+        _tokenSource.Cancel();
     }
 }
