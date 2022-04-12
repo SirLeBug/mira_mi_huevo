@@ -602,6 +602,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!1 &461334823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461334825}
+  - component: {fileID: 461334824}
+  m_Layer: 5
+  m_Name: LoginScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &461334824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461334823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa6e5a3cdd404aeebca024db9afeae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &461334825
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461334823}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 9.852978}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1388149314}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.59, y: -0.66}
+  m_SizeDelta: {x: 2.4472, y: 2.4472}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,6 +1657,7 @@ Transform:
   - {fileID: 1516881327}
   - {fileID: 1100908498}
   - {fileID: 722109822}
+  - {fileID: 461334825}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1750,8 +1800,8 @@ RectTransform:
   m_Father: {fileID: 826994826}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: -1.91745, y: -4.1035}
-  m_AnchorMax: {x: 2.91745, y: -2.7565}
+  m_AnchorMin: {x: -1.91745, y: -3.1235}
+  m_AnchorMax: {x: 2.91745, y: -1.7765}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1799,9 +1849,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1477932903}
-        m_TargetAssemblyTypeName: Auth, Assembly-CSharp
-        m_MethodName: Login
+      - m_Target: {fileID: 461334824}
+        m_TargetAssemblyTypeName: WebLogin, Assembly-CSharp
+        m_MethodName: OnLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2453,7 +2503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091319563}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44298148, y: -0.18842828, z: -0.012010206}
+  m_LocalPosition: {x: 0.44298148, y: -0.702, z: -0.012010206}
   m_LocalScale: {x: 0.5083683, y: 0.5083683, z: 0.5083683}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2527,7 +2577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2107632387
 RectTransform:
   m_ObjectHideFlags: 0
