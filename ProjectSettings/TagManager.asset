@@ -12,8 +12,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - EGG
+  - Menus
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Egg
+    uniqueID: 2167589189
     locked: 0
   - name: Menus
     uniqueID: 2604626019

@@ -4,20 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EggClick : MonoBehaviour
+public class EggClickDetect : MonoBehaviour
 {
     private int clickCoins = 0;
     public TextMeshProUGUI txt_clickcoins;
     public Animator anim;
     public AudioClip clickClip;
     public AudioSource clickSound;
-
-    [Header("Variables para comprobar overlaping")]
-    public GameObject menu_stats;
-    public GameObject menu_options;
-    public GameObject menu_info;
-    public GameObject menu_market;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,31 +21,23 @@ public class EggClick : MonoBehaviour
         txt_clickcoins.text = clickCoins.ToString() + " ClickCoins";
     }
 
+    // Update is called once per frame
     void Update()
     {
-        
-
         if (Input.GetMouseButtonDown(0))
         {
-            if(!(menu_stats.activeInHierarchy || menu_options.activeInHierarchy || menu_info.activeInHierarchy || menu_market.activeInHierarchy))
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
             {
-                Collider2D colliderHit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
-                if (colliderHit != null)
-                {
-                    if (colliderHit.gameObject.name == "huevo_clickable")
-                    {
-                        LeftClickFunc();
-                    }
-                    Debug.Log(colliderHit.gameObject.name);
-
-                }
+                Clicked(); 
+                
             }
         }
     }
 
     //Al clickar el ratón encima del huevo
-    private void LeftClickFunc()
+    private void Clicked()
     {
         //Acciona el trigger para la animación del huevo siendo clickado (work in progress)
         //anim.SetTrigger("Clicked");
@@ -63,11 +48,10 @@ public class EggClick : MonoBehaviour
         clickSound.PlayOneShot(clickClip);
 
         //Incrementa en 1 y guarda esta información para a su vez actualizarla en pantalla
-        clickCoins = PlayerPrefs.GetInt("ClickCoins");
         clickCoins++;
         PlayerPrefs.SetInt("ClickCoins", clickCoins);
         txt_clickcoins.text = clickCoins.ToString() + " ClickCoins";
-        //Debug.Log(this.gameObject.name);
+        Debug.Log(this.gameObject.name);
 
         //subimos el valor de las clickcoins totales a 1 más (estadísticas)
         PlayerPrefs.SetInt("totalClickCoins", PlayerPrefs.GetInt("totalClickCoins") + 1);

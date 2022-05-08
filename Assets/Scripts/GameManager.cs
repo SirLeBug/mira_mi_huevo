@@ -22,6 +22,16 @@ public class GameManager : MonoBehaviour
     public Toggle toggle_fullscreen;
     public TMP_Dropdown dropdown_quality;
 
+    //Seccion para la tienda/mercado/inventario
+    [Header("Market Variables")]
+    public TextMeshProUGUI var_clickcoinsactuales_market;
+
+    //Seccion para guardar las variables del juego
+    [Header("Game Variables")]
+    public int test;
+    public List<string> listaHuevos;
+    public static GlobalVars player = new GlobalVars();
+
     //Seccion para arreglar bugs
     [Header("Unity Fixer")]
     public GameObject Brightness;
@@ -39,8 +49,6 @@ public class GameManager : MonoBehaviour
     {
         //void Start: dentro de la coroutina, la aprobecho para lanzar código que por defecto se pondría en void Start, pero no puedes tener esa función + la coroutina
         startingcode();
-        setaudio();
-        setgraphics();
 
         //Coroutine para augmentar los segundos mientras estas jugando
         while (true)
@@ -50,8 +58,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Función para calcular el tiempo desde el primer login
     void startingcode()
+    {
+        LoadPlayer();
+        TimeStart();
+        setaudio();
+        setgraphics();
+    }
+
+    //Función para calcular el tiempo desde el primer login
+    void TimeStart()
     {
 
         //tiempo total
@@ -102,11 +118,13 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("ClickCoins"))
         {
             var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
+            var_clickcoinsactuales_market.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
         }
         else
         {
             PlayerPrefs.SetInt("ClickCoins", 0);
             var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
+            var_clickcoinsactuales_market.text = PlayerPrefs.GetInt("ClickCoins") + " CC";            
         }
     }
 
@@ -164,5 +182,25 @@ public class GameManager : MonoBehaviour
         //Esta información se refresca cada frame
         var_clickcoinstotales.text = PlayerPrefs.GetInt("totalClickCoins") + " CC";
         var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
+        var_clickcoinsactuales_market.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
+    }
+
+    public void SavePlayer(GlobalVars player)
+    {
+        SaveSystem.SavePlayer(player);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+
+        listaHuevos = data.listaHuevos;
+        test = data.testint;
+    }
+
+    private void OnApplicationQuit()
+    {
+        SavePlayer(player);
     }
 }
