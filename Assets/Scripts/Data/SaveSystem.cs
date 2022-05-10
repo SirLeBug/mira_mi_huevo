@@ -4,9 +4,9 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveSystem
+public class SaveSystem
 {
-    public static void SavePlayer(GlobalVars player)
+    public void SavePlayer(GlobalVars player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.fun";
@@ -18,7 +18,7 @@ public static class SaveSystem
         stream.Close();
     }
 
-    public static PlayerData LoadPlayer()
+    static PlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/player.fun";
         if (File.Exists(path))

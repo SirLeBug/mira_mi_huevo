@@ -4,10 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2022-04-24
+- Fix detection for PlayerPrefs where the key contains '_h'
+- Use unicode for windows registry lookups to support none ASCII chars in projects names
+
 ## [1.2.0] - 2022-01-01
 ### Added
 - Enhanced search field to filter player preferences by key or value
-- Add sorting functionality for Pref entries (none, asscending, descending)
+- Add sorting functionality for Pref entries (none, ascending, descending)
 
 ### Removed
 - Remove Unity 2017 support

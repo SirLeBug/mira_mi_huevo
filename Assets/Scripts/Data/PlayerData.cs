@@ -11,6 +11,6 @@ public class PlayerData : MonoBehaviour
     public PlayerData(GlobalVars player)
     {
         listaHuevos = player.listaHuevos;
-        testint = player.test;
+        //testint = player.test;
     }
 }

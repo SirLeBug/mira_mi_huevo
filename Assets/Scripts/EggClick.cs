@@ -18,6 +18,16 @@ public class EggClick : MonoBehaviour
     public GameObject menu_info;
     public GameObject menu_market;
 
+    [Header("Imagen del huevo")]
+    public SpriteRenderer imgHuevo;
+    public Sprite HuevoComun;
+    public Sprite HuevoRaro;
+    public Sprite HuevoMitico;
+    public Sprite HuevoLegendario;
+
+    public List<string> imgList;
+    private int eggOpenning = 0;
+    private string[] imgArr;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +36,29 @@ public class EggClick : MonoBehaviour
         //Recupera los ClickCoins que tiene el usuario para mostrarlos y partir de ahi en el contador al iniciar el juego
         clickCoins = PlayerPrefs.GetInt("ClickCoins");
         txt_clickcoins.text = clickCoins.ToString() + " ClickCoins";
+        imgList = GameManager.player.listaHuevos;
+        imgArr = imgList.ToArray();
+        //Debug.Log(imgArr[1]);
     }
 
     void Update()
     {
-        
+        //if(imgList[0] != null)
+        //{
+        //switch (imgList[0])
+        //{
+        //case "huevoComun": imgHuevo.sprite = HuevoComun; eggOpenning = 25; break;
+
+        //case "huevoRaro": imgHuevo.sprite = HuevoRaro; eggOpenning = 50; break;
+
+        //case "huevoMitico": imgHuevo.sprite = HuevoMitico; eggOpenning = 75; break;
+
+        //case "huevoLegendario": imgHuevo.sprite = HuevoLegendario; eggOpenning = 100; break;
+        //}
+        //}
+
+        //string[] imgArr = imgList.ToArray();
+        //Debug.Log(imgArr[0]);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -71,5 +99,13 @@ public class EggClick : MonoBehaviour
 
         //subimos el valor de las clickcoins totales a 1 más (estadísticas)
         PlayerPrefs.SetInt("totalClickCoins", PlayerPrefs.GetInt("totalClickCoins") + 1);
+
+        //eggOpenning--;
+        //if(eggOpenning == 0)
+        //{
+            //imgList.RemoveAt(0);
+            //GameManager.player.listaHuevos = imgList;
+            //Debug.Log(imgList[0]);
+        //}
     }
 }

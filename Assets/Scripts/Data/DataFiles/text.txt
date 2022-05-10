@@ -1,0 +1,1 @@
+{"totalClicks":745,"actualClicks":15,"firstLogin":1650357041,"listaHuevos":["huevoComun","huevoComun","huevoComun","huevoComun","huevoComun","huevoComun"],"listaCriaturas":[]}

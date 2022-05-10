@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
     //Seccion para guardar las variables del juego
     [Header("Game Variables")]
-    public int test;
-    public List<string> listaHuevos;
+    //public int test;
+    //public List<string> listaHuevos;
     public static GlobalVars player = new GlobalVars();
 
     //Seccion para arreglar bugs
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     void startingcode()
     {
-        LoadPlayer();
+        //LoadPlayer();
         TimeStart();
         setaudio();
         setgraphics();
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("ClickCoins", 0);
             var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
-            var_clickcoinsactuales_market.text = PlayerPrefs.GetInt("ClickCoins") + " CC";            
+            var_clickcoinsactuales_market.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
         }
     }
 
@@ -185,22 +185,8 @@ public class GameManager : MonoBehaviour
         var_clickcoinsactuales_market.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
     }
 
-    public void SavePlayer(GlobalVars player)
-    {
-        SaveSystem.SavePlayer(player);
-    }
-
     public void LoadPlayer()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-
-        listaHuevos = data.listaHuevos;
-        test = data.testint;
-    }
-
-    private void OnApplicationQuit()
-    {
-        SavePlayer(player);
+        Debug.Log("aaa");
     }
 }

@@ -28,7 +28,7 @@ public class ShopItem : MonoBehaviour
 
             if (colliderHit != null)
             {
-                if (colliderHit.gameObject.name == "huevo_clickable")
+                if (colliderHit.gameObject.name == "Tick")
                 {
                     LeftClickFunc();
                 }
@@ -54,16 +54,14 @@ public class ShopItem : MonoBehaviour
 
             for (int i = 0; i < cantItem; i++)
             {
-                string s = nameof(imageItem);
+                //quitamos la parte de "(Unity Texture2D)" del string
+                string s = imageItem.ToString().Split(" (")[0];
+                
                 GameManager.player.listaHuevos.Add(s);
                 //Debug.Log(GameManager.GlobalVars.listaHuevos);
             }
 
-            foreach (string x in GameManager.player.listaHuevos)
-            {
-                Debug.Log(x);
-            }
-            Debug.Log("//////////////////////////////////////////////////////////////");
+            Debug.Log(GameManager.player.listaHuevos.Count);
         }
     }
 
