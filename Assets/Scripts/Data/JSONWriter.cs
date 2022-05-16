@@ -42,7 +42,7 @@ public class JSONWriter : MonoBehaviour
         myPlayer.actualClicks = PlayerPrefs.GetInt("ClickCoins");
         myPlayer.totalClicks = PlayerPrefs.GetInt("totalClickCoins");
         myPlayer.firstLogin = PlayerPrefs.GetInt("firstLogin");
-        myPlayer.listaHuevos = GameManager.player.listaHuevos;
+        myPlayer.listaHuevos = GlobalVars.listaHuevos;
         myPlayer.listaCriaturas = new List<string>();
     }
 

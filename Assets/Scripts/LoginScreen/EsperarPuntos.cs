@@ -19,6 +19,7 @@ public class EsperarPuntos : MonoBehaviour
         }
     }
 
+    //La función añade puntos a la frase de "Esperando confirmación" para dar la sensación de carga
     void puntitocode()
     {
         if(txt.text == "Esperando confirmación...")

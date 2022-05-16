@@ -19,43 +19,55 @@ public class EggClick : MonoBehaviour
     public GameObject menu_market;
 
     [Header("Imagen del huevo")]
-    public SpriteRenderer imgHuevo;
-    public Sprite HuevoComun;
-    public Sprite HuevoRaro;
-    public Sprite HuevoMitico;
-    public Sprite HuevoLegendario;
+    public static SpriteRenderer imgHuevo;
+    public static Sprite HuevoComun;
+    public static Sprite HuevoRaro;
+    public static Sprite HuevoMitico;
+    public static Sprite HuevoLegendario;
+    public static Sprite HuevoBienvenida;
 
-    public List<string> imgList;
-    private int eggOpenning = 0;
+    public static List<string> imgList = new List<string>();
+    private static int eggOpenning = 0;
     private string[] imgArr;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        //imgHuevo.sprite = HuevoLegendario;
 
         //Recupera los ClickCoins que tiene el usuario para mostrarlos y partir de ahi en el contador al iniciar el juego
         clickCoins = PlayerPrefs.GetInt("ClickCoins");
         txt_clickcoins.text = clickCoins.ToString() + " ClickCoins";
-        imgList = GameManager.player.listaHuevos;
-        imgArr = imgList.ToArray();
-        //Debug.Log(imgArr[1]);
+        //imgList = GlobalVars.listaHuevos;
+        
+        
+    }
+
+    public static void starter()
+    {
+        //No funciona
+        //startEgg();
+    }
+
+    //Funcion para iniciar la imágen del huevo y darle un valor de los clicks necesarios para abrirlo
+    public static void startEgg()
+    {
+        switch (imgList[0])
+        {
+            case "huevoComun": imgHuevo.sprite = HuevoComun; eggOpenning = 25; break;
+
+            case "huevoRaro": imgHuevo.sprite = HuevoRaro; eggOpenning = 50; break;
+
+            case "huevoMitico": imgHuevo.sprite = HuevoMitico; eggOpenning = 75; break;
+
+            case "huevoLegendario": imgHuevo.sprite = HuevoLegendario; eggOpenning = 100; break;
+
+            default: imgHuevo.sprite = HuevoBienvenida; break;
+        }
     }
 
     void Update()
     {
-        //if(imgList[0] != null)
-        //{
-        //switch (imgList[0])
-        //{
-        //case "huevoComun": imgHuevo.sprite = HuevoComun; eggOpenning = 25; break;
-
-        //case "huevoRaro": imgHuevo.sprite = HuevoRaro; eggOpenning = 50; break;
-
-        //case "huevoMitico": imgHuevo.sprite = HuevoMitico; eggOpenning = 75; break;
-
-        //case "huevoLegendario": imgHuevo.sprite = HuevoLegendario; eggOpenning = 100; break;
-        //}
-        //}
 
         //string[] imgArr = imgList.ToArray();
         //Debug.Log(imgArr[0]);
@@ -64,15 +76,43 @@ public class EggClick : MonoBehaviour
         {
             if(!(menu_stats.activeInHierarchy || menu_options.activeInHierarchy || menu_info.activeInHierarchy || menu_market.activeInHierarchy))
             {
-                Collider2D colliderHit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-                if (colliderHit != null)
+                if (hit.collider != null)
                 {
-                    if (colliderHit.gameObject.name == "huevo_clickable")
+                    if (hit.collider.gameObject.name == "huevo_clickable")
                     {
+                        //Debug.Log(imgList[0]);
                         LeftClickFunc();
+                        if (imgList[0] != null && eggOpenning == 0)
+                        {
+                            switch (imgList[0])
+                            {
+                                case "huevoComun": 
+                                    imgHuevo.sprite = HuevoComun; 
+                                    eggOpenning = 25; 
+                                    break;
+
+                                case "huevoRaro": 
+                                    imgHuevo.sprite = HuevoRaro; 
+                                    eggOpenning = 50; 
+                                    break;
+
+                                case "huevoMitico": 
+                                    imgHuevo.sprite = HuevoMitico; 
+                                    eggOpenning = 75; 
+                                    break;
+
+                                case "huevoLegendario": 
+                                    imgHuevo.sprite = HuevoLegendario; 
+                                    eggOpenning = 100; 
+                                    break;
+
+                                default: imgHuevo.sprite = HuevoBienvenida; break;
+                            }
+                        }
                     }
-                    Debug.Log(colliderHit.gameObject.name);
+                    Debug.Log(hit.collider.gameObject.name);
 
                 }
             }
@@ -100,12 +140,12 @@ public class EggClick : MonoBehaviour
         //subimos el valor de las clickcoins totales a 1 más (estadísticas)
         PlayerPrefs.SetInt("totalClickCoins", PlayerPrefs.GetInt("totalClickCoins") + 1);
 
-        //eggOpenning--;
-        //if(eggOpenning == 0)
-        //{
-            //imgList.RemoveAt(0);
-            //GameManager.player.listaHuevos = imgList;
-            //Debug.Log(imgList[0]);
-        //}
+        eggOpenning--;
+        if(eggOpenning == 0)
+        {
+            imgList.RemoveAt(0);
+            GlobalVars.listaHuevos = imgList;
+            Debug.Log(imgList[0]);
+        }
     }
 }

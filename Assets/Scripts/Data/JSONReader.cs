@@ -1,4 +1,3 @@
-using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +25,9 @@ public class JSONReader : MonoBehaviour
 
     public Player player = new Player();
     public PlayerList myPlayerList = new PlayerList();
+    //public GlobalVars globalVars = new GlobalVars();
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +35,17 @@ public class JSONReader : MonoBehaviour
         //Debug.Log(textJSON.text);
         myPlayerList = JsonUtility.FromJson<PlayerList>(textJSON.text);
         player = JsonUtility.FromJson<Player>(textJSON.text);
-        GameManager.player.listaHuevos = player.listaHuevos;
-        GameManager.player.listaCriaturas = player.listaCriaturas;
-        //Debug.Log(player.totalClicks);
+        //globalVars = JsonUtility.FromJson<GlobalVars>(textJSON.text);
+        GlobalVars.listaHuevos = player.listaHuevos;
+        GlobalVars.listaCriaturas = player.listaCriaturas;
+        //GameManager.player = globalVars;
+        //Debug.Log(GlobalVars.listaHuevos.Count);
+        Debug.Log("/////////////////////////////////////");
+        //Debug.Log(player.listaHuevos[1]);
+    }
+
+    public void Reader()
+    {
+        
     }
 }

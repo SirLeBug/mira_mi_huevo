@@ -1098,6 +1098,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97418233}
   m_CullTransparentMesh: 1
+--- !u!1 &133078069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133078071}
+  - component: {fileID: 133078070}
+  m_Layer: 0
+  m_Name: GlobalVars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &133078070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133078069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e056196a9959b459ec30929355c55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &133078071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133078069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.41653523, y: -0.07232006, z: 328.0358}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139442350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,7 +3790,7 @@ GameObject:
   - component: {fileID: 417008158}
   - component: {fileID: 417008159}
   m_Layer: 7
-  m_Name: Tick
+  m_Name: TickComun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3863,7 +3907,7 @@ GameObject:
   - component: {fileID: 420049984}
   - component: {fileID: 420049983}
   m_Layer: 7
-  m_Name: Tick
+  m_Name: TickLegendario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4721,7 +4765,7 @@ GameObject:
   - component: {fileID: 466177758}
   - component: {fileID: 466177757}
   m_Layer: 7
-  m_Name: Tick
+  m_Name: TickRaro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7028,7 +7072,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a5288db3ec286d47a379d8fabd98406, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f2c30e958400a84b83a85870ed9e04a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12468,7 +12512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5514fdcedcf865444a79933eb0b293ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a141da2c46ccf2d4b9fffd0eb63f2dbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15265,6 +15309,8 @@ MonoBehaviour:
   dropdown_quality: {fileID: 435400505}
   var_clickcoinsactuales_market: {fileID: 1145103737}
   Brightness: {fileID: 1766445207}
+  JSONReader: {fileID: 153554293}
+  unaEntrada: 0
 --- !u!1 &1574448448
 GameObject:
   m_ObjectHideFlags: 0
@@ -16364,7 +16410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2fd04a5dc14de52449060bbfb8fce0f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8dea086939270b349b7d5dbfbf92babb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19995,7 +20041,7 @@ GameObject:
   - component: {fileID: 2024832869}
   - component: {fileID: 2024832868}
   m_Layer: 7
-  m_Name: Tick
+  m_Name: TickMitico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20157,7 +20203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e83a078874eb1ee439590e9c11cd4821, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 012d6f2280b1c224f8483dbbe25eadb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21150,7 +21196,7 @@ PrefabInstance:
     - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: HuevoRaro
       value: 
-      objectReference: {fileID: 21300000, guid: 0a5288db3ec286d47a379d8fabd98406, type: 3}
+      objectReference: {fileID: 21300000, guid: 41a3ff9dd3f80c54e8dd8d207a523716, type: 3}
     - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: menu_info
       value: 
@@ -21158,7 +21204,7 @@ PrefabInstance:
     - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: HuevoComun
       value: 
-      objectReference: {fileID: 21300000, guid: 2fd04a5dc14de52449060bbfb8fce0f8, type: 3}
+      objectReference: {fileID: 21300000, guid: 72a7b62a61a96f748935edf01b24634e, type: 3}
     - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: clickSound
       value: 
@@ -21170,7 +21216,7 @@ PrefabInstance:
     - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: HuevoMitico
       value: 
-      objectReference: {fileID: 21300000, guid: 5514fdcedcf865444a79933eb0b293ac, type: 3}
+      objectReference: {fileID: 21300000, guid: af00fa2673167254297b81fef98cb423, type: 3}
     - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: menu_market
       value: 
@@ -21184,9 +21230,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 637457310}
     - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
+      propertyPath: HuevoBienvenida
+      value: 
+      objectReference: {fileID: -6518570088502800653, guid: 72db5bd2cbfb5794f9383245e5d98618, type: 3}
+    - target: {fileID: 1216922391649297558, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: HuevoLegendario
       value: 
-      objectReference: {fileID: 21300000, guid: e83a078874eb1ee439590e9c11cd4821, type: 3}
+      objectReference: {fileID: 21300000, guid: c46ec9a6cbc178f45ac9637508c87de9, type: 3}
     - target: {fileID: 1793611822817485740, guid: 7a7509b9baf8eac48a7f61899dda25e0, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GlobalVars : MonoBehaviour
 {
-    public List<string> listaHuevos = new List<string>();
-    public List<string> listaCriaturas = new List<string>();
+    //Simila las variables globales de otros lenguajes de programación pero en Unity
+    public static int totalClicks;
+    public static int actualClicks;
+    public static int firstLogin;
+    public static List<string> listaHuevos;
+    public static List<string> listaCriaturas;
 }

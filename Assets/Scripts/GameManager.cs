@@ -30,12 +30,15 @@ public class GameManager : MonoBehaviour
     [Header("Game Variables")]
     //public int test;
     //public List<string> listaHuevos;
-    public static GlobalVars player = new GlobalVars();
+    //public static GlobalVars player = new GlobalVars();
 
     //Seccion para arreglar bugs
     [Header("Unity Fixer")]
     public GameObject Brightness;
     private Color32 brightColor;
+
+    public GameObject JSONReader;
+    public bool unaEntrada = false;
 
     //Variables utilizadas para calculo de tiempo en las estadísticas
     int seconds = 0;
@@ -50,17 +53,18 @@ public class GameManager : MonoBehaviour
         //void Start: dentro de la coroutina, la aprobecho para lanzar código que por defecto se pondría en void Start, pero no puedes tener esa función + la coroutina
         startingcode();
 
-        //Coroutine para augmentar los segundos mientras estas jugando
+        //Coroutina para augmentar los segundos mientras estas jugando (o ejecutar variables cada x segundos, es una opción distinta de void Update)
         while (true)
         {
             yield return new WaitForSeconds(1f);
             TimeUpdate();
+            //LoadPlayer();
         }
     }
 
+    //Esta función actua como un void Start
     void startingcode()
     {
-        //LoadPlayer();
         TimeStart();
         setaudio();
         setgraphics();
@@ -183,10 +187,21 @@ public class GameManager : MonoBehaviour
         var_clickcoinstotales.text = PlayerPrefs.GetInt("totalClickCoins") + " CC";
         var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
         var_clickcoinsactuales_market.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
+
+        //Debug.Log(player.listaCriaturas[0]);
     }
 
+    //Prototipo de código para cargar un huevo de la lista de 
     public void LoadPlayer()
     {
-        Debug.Log("aaa");
+        EggClick.imgList = GlobalVars.listaHuevos;
+        
+        if (unaEntrada == false)
+        {
+            EggClick.starter();
+            Debug.Log(GlobalVars.listaHuevos.Count);
+            unaEntrada = true;
+        }
+
     }
 }

@@ -24,6 +24,7 @@ public class Auth : MonoBehaviour
 
         try
         {
+            //hacemos login con el valor de la caja de texto (guardado en local) y pasamos a la siguiente escena (en la consola muestro la dirección de la cartera y el balance en ETH como ejemplo)
             if (await Web3Manager.Login("app id", PlayerPrefs.GetString("TempEmail")))
             {
                 SceneManager.LoadScene("MainScene");

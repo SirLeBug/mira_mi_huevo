@@ -23,19 +23,29 @@ public class ShopItem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
-            Collider2D colliderHit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (colliderHit != null)
+            //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            //if (hit.collider != null)
+            //{
+            //if (hit.collider.gameObject.name == "Tick" || hit.collider.gameObject.name == "huevo_bienvenida")
+            //{
+            //LeftClickFunc();
+            //}
+            //Debug.Log(hit.collider.gameObject.name);
+
+            //}
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
+            foreach (var hit in hits)
             {
-                if (colliderHit.gameObject.name == "Tick")
+                if (hit.collider.name == name)
                 {
                     LeftClickFunc();
                 }
-                Debug.Log(colliderHit.gameObject.name);
-
             }
-            
+
         }
     }
 
@@ -57,11 +67,11 @@ public class ShopItem : MonoBehaviour
                 //quitamos la parte de "(Unity Texture2D)" del string
                 string s = imageItem.ToString().Split(" (")[0];
                 
-                GameManager.player.listaHuevos.Add(s);
+                GlobalVars.listaHuevos.Add(s);
                 //Debug.Log(GameManager.GlobalVars.listaHuevos);
             }
 
-            Debug.Log(GameManager.player.listaHuevos.Count);
+            Debug.Log(GlobalVars.listaHuevos.Count);
         }
     }
 
